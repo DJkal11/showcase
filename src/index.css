@@ -323,7 +323,7 @@ body {
   position: relative;
   border-radius: 1.5rem;
   border: 1px solid #222;
-  background-color: #111;
+  background-color: #ff4e4e;
   padding: 2rem;
   overflow: hidden;
   --mouse-x: 50%;
@@ -331,6 +331,7 @@ body {
   --spotlight-color: rgba(255, 255, 255, 0.05);
   width: 300px;
   height: 300px;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
 .card-spotlight::before {
@@ -348,8 +349,15 @@ body {
 
 .card-spotlight:hover::before,
 .card-spotlight:focus-within::before {
-  opacity: 0.6;
+  opacity: 0.85;
 }
+
+.card-spotlight:hover { transform: translateY(-2px); }
+
+/* Spotlight accent hover highlights */
+.spotlight--violet:hover { box-shadow: 0 12px 36px rgba(239, 238, 241, 0.22); border-color: rgba(232, 232, 232, 0.35); }
+.spotlight--indigo:hover { box-shadow: 0 12px 36px rgba(99,102,241,0.22); border-color: rgba(99,102,241,0.35); }
+.spotlight--rose:hover { box-shadow: 0 12px 36px rgba(244,63,94,0.22); border-color: rgba(244,63,94,0.35); }
 
 /* Tilted Card */
 .tilted-card-figure {
@@ -464,13 +472,13 @@ body {
   padding: 1.25em;
   border-radius: 20px;
   border: 1px solid var(--border-color);
-  background: var(--background-dark);
+  background: rgb(0, 38, 14) !important;
   font-weight: 300;
   overflow: hidden;
   transition: all 0.3s ease;
 
-  --glow-x: 50%;
-  --glow-y: 50%;
+  --glow-x: 90%;
+  --glow-y: 90%;
   --glow-intensity: 0;
   --glow-radius: 200px;
 }

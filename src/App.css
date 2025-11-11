@@ -2,6 +2,7 @@
 :root{
   --bg:#f6f7fb;
   --card:#ffffff;
+  --text:#111827;
   --muted:#6b7280;
   --accent:#2563eb;
   --border:#e6e9ef;
@@ -9,6 +10,20 @@
   --page-pad:32px;
   --header-height:64px;
   --radius:10px;
+  --shadow-sm: 0 4px 14px rgba(17,24,39,0.06);
+  --shadow-md: 0 8px 24px rgba(17,24,39,0.08);
+}
+
+/* Dark theme variables */
+:root[data-theme="dark"]{
+  --bg:#0b1120; /* slate-950 */
+  --card:#0f172a; /* slate-900 */
+  --text:#e5e7eb; /* slate-200 */
+  --muted:#94a3b8; /* slate-400 */
+  --accent:#3b82f6; /* blue-500 */
+  --border:#1f2937; /* slate-800 */
+  --shadow-sm: 0 4px 14px rgba(0,0,0,0.35);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 
@@ -16,9 +31,10 @@ body{
   margin:0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   background:var(--bg);
-  color:#111827;
+  color:var(--text);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+  transition: background 180ms ease, color 180ms ease;
 }
 
 #root{
@@ -27,6 +43,17 @@ body{
   padding: var(--page-pad);
   padding-top: calc(var(--page-pad) + var(--header-height));
 }
+
+/* Global typography */
+h1{ font-size: 28px; line-height: 1.2; margin: 0 0 12px }
+h2{ font-size: 22px; line-height: 1.25; margin: 0 0 12px }
+h3{ font-size: 18px; line-height: 1.3; margin: 0 0 8px }
+p{ font-size: 15px; line-height: 1.6; color: var(--muted) }
+
+/* Page layout helper */
+.page{ display:block }
+.page .section{ margin-bottom: 28px }
+.section-title{ font-weight:700 }
 
 .logo {
   height: 6em;
@@ -89,7 +116,7 @@ body{
 .component-card h3 { margin-top: 0; }
 
 /* Optional subtle card modifier when distinct blocks are desired */
-.component-card.card--subtle{ background:var(--card); border:1px solid var(--border); box-shadow: 0 6px 18px rgba(17,24,39,0.06); padding:20px }
+.component-card.card--subtle{ background:var(--card); border:1px solid var(--border); box-shadow: var(--shadow-sm); padding:20px }
 
 /* Center and align component content with labels at the bottom */
 .component-card--centered{ display:flex; flex-direction:column; align-items:center; justify-content:flex-start; text-align:center }
@@ -113,7 +140,8 @@ body{
   align-items:center;
   justify-content:center; /* center the inner container */
   padding:0;
-  background: rgba(255,255,255,0.88);
+  backdrop-filter: saturate(180%) blur(8px);
+  background: color-mix(in oklab, var(--card) 92%, transparent);
   border-bottom:1px solid var(--border);
   z-index: 60;
 }
@@ -123,12 +151,12 @@ body{
 .brand-link{ font-weight:700; color:var(--accent); text-decoration:none; font-size:18px; }
 .main-nav{ display:flex; gap:12px; align-items:center; }
 .nav-link{ color:var(--muted); text-decoration:none; padding:10px 14px; border-radius:8px; transition: all 160ms ease; font-weight:600; font-size:15px; }
-.nav-link:hover{ background: rgba(37,99,235,0.06); color:var(--accent); }
-.nav-link.active{ color:var(--accent); box-shadow: inset 0 -2px 0 rgba(37,99,235,0.08); }
+.nav-link:hover{ background: color-mix(in oklab, var(--accent) 8%, transparent); color:var(--accent); }
+.nav-link.active{ color:var(--accent); box-shadow: inset 0 -2px 0 color-mix(in oklab, var(--accent) 14%, transparent); }
 
 .header-actions{ display:flex; gap:10px; align-items:center }
 .icon-btn{ background:transparent; border:1px solid transparent; padding:8px; border-radius:8px; cursor:pointer; color:var(--muted) }
-.icon-btn:hover{ background:rgba(0,0,0,0.03); color:var(--accent) }
+.icon-btn:hover{ background: color-mix(in oklab, var(--text) 6%, transparent); color:var(--accent) }
 .cta{ background:var(--accent); color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600 }
 
 /* Hamburger & responsive nav */
@@ -157,7 +185,7 @@ body{
   border:1px solid var(--border);
   padding:18px;
   border-radius:12px;
-  box-shadow: 0 8px 24px rgba(17,24,39,0.06);
+  box-shadow: var(--shadow-md);
   display:flex;
   flex-direction:column;
   gap:12px;
@@ -180,5 +208,37 @@ body{
 /* Showcase grid card fix inside component-card */
 .component-card .showcase-grid{ margin:0 }
 .component-card .showcase-card{ margin-bottom:0 }
+
+/* Footer */
+.app-footer{ border-top:1px solid var(--border); padding:16px 0; }
+.footer-inner{ width:100%; max-width:var(--max-width); margin:0 auto; padding:0 20px; display:flex; align-items:center; justify-content:space-between }
+.footer-left{ display:flex; align-items:center; gap:8px; color:var(--muted) }
+.footer-left .brand{ font-weight:700; color:var(--text) }
+.footer-links{ display:flex; gap:12px }
+.footer-link{ color:var(--muted); text-decoration:none; font-weight:600; font-size:14px }
+.footer-link:hover{ color:var(--accent) }
+
+/* Accent variants for React Bits */
+.card--accent-violet{ background: linear-gradient(180deg, color-mix(in oklab, #6d28d9 12%, var(--card)), var(--card)); border-color: color-mix(in oklab, #6d28d9 22%, var(--border)) }
+.card--accent-indigo{ background: linear-gradient(180deg, color-mix(in oklab, #4f46e5 12%, var(--card)), var(--card)); border-color: color-mix(in oklab, #4f46e5 22%, var(--border)) }
+.card--accent-rose{ background: linear-gradient(180deg, color-mix(in oklab, #f43f5e 10%, var(--card)), var(--card)); border-color: color-mix(in oklab, #f43f5e 22%, var(--border)) }
+
+.scroll-list .item.accent-blue{ background: linear-gradient(180deg, #eff6ff, #fff); border-color: color-mix(in oklab, #3b82f6 16%, var(--border)); }
+.scroll-list .item.accent-violet{ background: linear-gradient(180deg, #f5f3ff, #fff); border-color: color-mix(in oklab, #7c3aed 16%, var(--border)); }
+.scroll-list .item.accent-rose{ background: linear-gradient(180deg, #fff1f2, #fff); border-color: color-mix(in oklab, #f43f5e 16%, var(--border)); }
+.scroll-list .item.accent-blue .item-text,
+.scroll-list .item.accent-violet .item-text,
+.scroll-list .item.accent-rose .item-text{ color: #111; }
+
+.scroll-list .item{ transition: box-shadow 160ms ease, transform 160ms ease, border-color 160ms ease }
+.scroll-list .item:hover{ transform: translateY(-2px); box-shadow: 0 10px 26px rgba(17,24,39,0.12) }
+.scroll-list .item.accent-rose:hover{ box-shadow: 0 12px 28px rgba(244,63,94,0.18); border-color: color-mix(in oklab, #f43f5e 30%, var(--border)) }
+.scroll-list .item.accent-violet:hover{ box-shadow: 0 12px 28px rgba(124,58,237,0.18); border-color: color-mix(in oklab, #7c3aed 30%, var(--border)) }
+.scroll-list .item.accent-blue:hover{ box-shadow: 0 12px 28px rgba(59,130,246,0.18); border-color: color-mix(in oklab, #3b82f6 30%, var(--border)) }
+
+/* Spotlight accent helpers */
+.spotlight--violet { border-color: color-mix(in oklab, #f8f8f8 35%, #fdfbfb); background-color: #000000; }
+.spotlight--indigo { border-color: color-mix(in oklab, #4f46e5 35%, #222); background-color: #121426; }
+.spotlight--rose { border-color: color-mix(in oklab, #f43f5e 35%, #222); background-color: #1a1012; }
 
 

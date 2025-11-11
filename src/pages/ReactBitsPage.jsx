@@ -7,18 +7,18 @@ import MagicBento from '@/components/MagicBento'
 
 export default function ReactBitsPage(){
   return (
-    <div style={{padding:20}}>
+    <div className="page">
       <div className="component-grid">
 
-        <div className="component-card component-card--centered">
-          <div className="component-body"><SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(255,255,255,0.94)">
+        <div className="component-card component-card--centered card--accent-violet">
+          <div className="component-body"><SpotlightCard className="spotlight--violet" spotlightColor="rgba(124,58,237,0.65)">
             <h3 style={{ color: '#fff' }}>Hover over me!</h3>
           </SpotlightCard></div>
           <h3 className="component-label">Spotlight Card</h3>
         </div>
 
-        <div className="component-card component-card--centered">
-          <div className="component-body"><div className="demo-wrapper"><div className="demo-box"><AnimatedList /></div></div></div>
+        <div className="component-card component-card--centered card--accent-rose">
+          <div className="component-body"><div className="demo-wrapper"><div className="demo-box"><AnimatedList itemClassName="accent-rose" /></div></div></div>
           <h3 className="component-label">Animated List</h3>
         </div>
 
@@ -27,10 +27,10 @@ export default function ReactBitsPage(){
        
 
       </div>
-        <div className="">
-          <div className=""><div className=""><div className=""><MagicBento /></div></div></div>
-          <h3 className="component-label">Magic Bento</h3>
-        </div>
+      <div className="component-card component-card--centered card--accent-indigo">
+        <div className="component-body"><MagicBento enableTilt={true} glowColor="99, 102, 241" spotlightRadius={360} /></div>
+        <h3 className="component-label">Magic Bento</h3>
+      </div>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import ReactBitsPage from './pages/ReactBitsPage'
 import MotionPage from './pages/MotionPage'
 import ToolsPage from './pages/ToolsPage'
@@ -19,6 +20,7 @@ function App(){
           <Route path="/extras" element={<ExtrasPage/>} /> */}
         </Routes>
       </main>
+      <Footer />
     </div>
   )
 }

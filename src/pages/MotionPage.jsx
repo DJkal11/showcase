@@ -54,8 +54,8 @@ function ExpandCollapseDemo(){
 
 export default function MotionPage(){
   return (
-    <div style={{padding:20}}>
-      <h1>Motion / Animations</h1>
+    <div className="page">
+      <h1 className="section-title">Motion / Animations</h1>
       <div className="component-grid">
         <div className="component-card component-card--centered">
           <div className="component-body"><Carousel /></div>
@@ -78,11 +78,6 @@ export default function MotionPage(){
         </div>
 
         
-
-        <div className="component-card component-card--centered">
-          <div className="component-body"><div className="demo-wrapper"><div className="demo-box"><DragCardDemo /></div></div></div>
-          <h3 className="component-label">Drag Card (reorder/gesture)</h3>
-        </div>
 
 
         

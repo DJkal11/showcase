@@ -21,9 +21,7 @@ export default function Header(){
           <NavLink to="/extras" className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'} onClick={() => setOpen(false)}>Extras</NavLink> */}
         </nav>
 
-        <div className="header-actions">
-         
-        </div>
+        <div className="header-actions"></div>
       </div>
     </header>
   )
