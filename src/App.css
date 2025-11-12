@@ -7,7 +7,15 @@
   --accent:#2563eb;
   --border:#e6e9ef;
   --max-width:1200px;
-  --page-pad:32px;
+  /* Responsive page padding and spacing scale */
+  --page-pad: clamp(16px, 4vw, 40px);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
   --header-height:64px;
   --radius:10px;
   --shadow-sm: 0 4px 14px rgba(17,24,39,0.06);
@@ -95,7 +103,7 @@ p{ font-size: 15px; line-height: 1.6; color: var(--muted) }
 .component-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: var(--space-6);
   align-items: start;
 }
 
@@ -108,15 +116,18 @@ p{ font-size: 15px; line-height: 1.6; color: var(--muted) }
 .component-card {
   background: transparent; /* blend with page by default */
   border: 1px solid transparent;
-  padding: 18px 0; /* lightweight spacing inside grid */
+  padding: var(--space-5) 0; /* lightweight spacing inside grid */
   border-radius: calc(var(--radius) - 2px);
   box-shadow: none;
 }
 
 .component-card h3 { margin-top: 0; }
 
+/* Short description under component label */
+.component-desc{ margin: var(--space-1) 0 0; font-size: 13px; color: var(--muted); }
+
 /* Optional subtle card modifier when distinct blocks are desired */
-.component-card.card--subtle{ background:var(--card); border:1px solid var(--border); box-shadow: var(--shadow-sm); padding:20px }
+.component-card.card--subtle{ background:var(--card); border:1px solid var(--border); box-shadow: var(--shadow-sm); padding: var(--space-5) }
 
 /* Center and align component content with labels at the bottom */
 .component-card--centered{ display:flex; flex-direction:column; align-items:center; justify-content:flex-start; text-align:center }
@@ -146,11 +157,11 @@ p{ font-size: 15px; line-height: 1.6; color: var(--muted) }
   z-index: 60;
 }
 
-.header-inner{ width:100%; max-width:var(--max-width); display:flex; align-items:center; justify-content:space-between; padding:0 20px }
+.header-inner{ width:100%; max-width:var(--max-width); display:flex; align-items:center; justify-content:space-between; padding:0 var(--page-pad) }
 .header-left{ display:flex; align-items:center; gap:12px; }
 .brand-link{ font-weight:700; color:var(--accent); text-decoration:none; font-size:18px; }
 .main-nav{ display:flex; gap:12px; align-items:center; }
-.nav-link{ color:var(--muted); text-decoration:none; padding:10px 14px; border-radius:8px; transition: all 160ms ease; font-weight:600; font-size:15px; }
+.nav-link{ color:var(--muted); text-decoration:none; padding: var(--space-2) var(--space-3); border-radius:8px; transition: all 160ms ease; font-weight:600; font-size:15px; }
 .nav-link:hover{ background: color-mix(in oklab, var(--accent) 8%, transparent); color:var(--accent); }
 .nav-link.active{ color:var(--accent); box-shadow: inset 0 -2px 0 color-mix(in oklab, var(--accent) 14%, transparent); }
 
@@ -210,8 +221,8 @@ p{ font-size: 15px; line-height: 1.6; color: var(--muted) }
 .component-card .showcase-card{ margin-bottom:0 }
 
 /* Footer */
-.app-footer{ border-top:1px solid var(--border); padding:16px 0; }
-.footer-inner{ width:100%; max-width:var(--max-width); margin:0 auto; padding:0 20px; display:flex; align-items:center; justify-content:space-between }
+.app-footer{ border-top:1px solid var(--border); padding: var(--space-4) 0; }
+.footer-inner{ width:100%; max-width:var(--max-width); margin:0 auto; padding:0 var(--page-pad); display:flex; align-items:center; justify-content:space-between }
 .footer-left{ display:flex; align-items:center; gap:8px; color:var(--muted) }
 .footer-left .brand{ font-weight:700; color:var(--text) }
 .footer-links{ display:flex; gap:12px }

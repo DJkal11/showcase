@@ -60,21 +60,25 @@ export default function MotionPage(){
         <div className="component-card component-card--centered">
           <div className="component-body"><Carousel /></div>
           <h3 className="component-label">Motion Carousel</h3>
+          <p className="component-desc">Carousel with Motion-powered transitions and gestures.</p>
         </div>
 
         <div className="component-card component-card--centered">
           <div className="component-body"><ElementScroll /></div>
           <h3 className="component-label">Element Scroll</h3>
+          <p className="component-desc">Scroll-triggered animations with viewport thresholds.</p>
         </div>
 
         <div className="component-card component-card--centered">
           <div className="component-body"><TiltedCard imageSrc="https://greggvanourek.com/wp-content/uploads/2023/08/Nature-path-by-water-trees-and-mountains-AdobeStock_291242770-scaled.jpeg" /></div>
           <h3 className="component-label">Tilted Card (animated)</h3>
+          <p className="component-desc">Hover tilt, smooth scaling, and animated overlay.</p>
         </div>
 
          <div className="component-card component-card--centered">
           <div className="component-body"><MobileMenu /></div>
           <h3 className="component-label">Mobile Menu</h3>
+          <p className="component-desc">Responsive menu with slide/scale transitions.</p>
         </div>
 
         
@@ -86,6 +90,7 @@ export default function MotionPage(){
       <div className="component-card component-card--centered">
         <div className="component-body"><div className="demo-wrapper"><div className="viewport-container"><ViewportElement /></div></div></div>
         <h3 className="component-label">Elememnt Viewport Tracking</h3>
+        <p className="component-desc">Detects when elements enter the viewport for effects.</p>
       </div>
     </div>
   )

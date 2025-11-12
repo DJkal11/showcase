@@ -11,6 +11,7 @@ export default function Home(){
         <div className="component-card component-card--centered">
           <div className="component-body"><Carousel /></div>
           <h3 className="component-label">Carousel</h3>
+          <p className="component-desc">Swipeable, accessible image/content carousel.</p>
         </div>
 
         <div className="component-card component-card--centered">
@@ -21,6 +22,7 @@ export default function Home(){
             </SpotlightCard>
           </div>
           <h3 className="component-label">SpotlightCard</h3>
+          <p className="component-desc">Mouse-follow spotlight with blend-based glow.</p>
         </div>
 
         <div className="component-card component-card--centered">
@@ -39,9 +41,10 @@ export default function Home(){
               showTooltip={true}
               displayOverlayContent={true}
               overlayContent={<p className="tilted-card-demo-text">This is an overlay content displayed on top of the tilted card.</p>}
-            />
+          />
           </div>
           <h3 className="component-label">TiltedCard</h3>
+          <p className="component-desc">3D tilt with hover scale and overlay content.</p>
         </div>
       </section>
 
