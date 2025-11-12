@@ -625,10 +625,11 @@ body {
   position: absolute;
   inset: 0;
   padding: 6px;
+  /* Use direct alpha variables instead of calc() in rgba() for better Safari compatibility */
   background: radial-gradient(
     var(--glow-radius) circle at var(--glow-x) var(--glow-y),
-    rgba(132, 0, 255, calc(var(--glow-intensity) * 0.8)) 0%,
-    rgba(132, 0, 255, calc(var(--glow-intensity) * 0.4)) 30%,
+    rgba(132, 0, 255, var(--glow-alpha-1, 0)) 0%,
+    rgba(132, 0, 255, var(--glow-alpha-2, 0)) 30%,
     transparent 60%
   );
   border-radius: inherit;
@@ -641,6 +642,8 @@ body {
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   pointer-events: none;
+  /* Default to hidden; reveal on hover for a cleaner look */
+  opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 1;
 }

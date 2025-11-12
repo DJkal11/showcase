@@ -77,6 +77,9 @@ const updateCardGlowProperties = (card, mouseX, mouseY, glow, radius) => {
   card.style.setProperty('--glow-x', `${relativeX}%`);
   card.style.setProperty('--glow-y', `${relativeY}%`);
   card.style.setProperty('--glow-intensity', glow.toString());
+  // Provide explicit alpha variables for cross-browser compatibility
+  card.style.setProperty('--glow-alpha-1', (glow * 0.8).toString());
+  card.style.setProperty('--glow-alpha-2', (glow * 0.4).toString());
   card.style.setProperty('--glow-radius', `${radius}px`);
 };
 
@@ -330,18 +333,19 @@ const GlobalSpotlight = ({
 
     const spotlight = document.createElement('div');
     spotlight.className = 'global-spotlight';
+    const size = spotlightRadius * 2; // tie size to radius for consistency between envs
     spotlight.style.cssText = `
       position: fixed;
-      width: 800px;
-      height: 800px;
+      width: ${size}px;
+      height: ${size}px;
       border-radius: 50%;
       pointer-events: none;
       background: radial-gradient(circle,
-        rgba(${glowColor}, 0.15) 0%,
-        rgba(${glowColor}, 0.08) 15%,
-        rgba(${glowColor}, 0.04) 25%,
-        rgba(${glowColor}, 0.02) 40%,
-        rgba(${glowColor}, 0.01) 65%,
+        rgba(${glowColor}, 0.12) 0%,
+        rgba(${glowColor}, 0.06) 15%,
+        rgba(${glowColor}, 0.03) 25%,
+        rgba(${glowColor}, 0.015) 40%,
+        rgba(${glowColor}, 0.008) 65%,
         transparent 70%
       );
       z-index: 200;
@@ -408,9 +412,9 @@ const GlobalSpotlight = ({
 
       const targetOpacity =
         minDistance <= proximity
-          ? 0.8
+          ? 0.6
           : minDistance <= fadeDistance
-            ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8
+            ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.6
             : 0;
 
       gsap.to(spotlightRef.current, {
